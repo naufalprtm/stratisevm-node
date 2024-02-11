@@ -235,9 +235,10 @@ screen -S validator
 
 ```
 #  Run a Command Inside the Screen Session:
-
+#### CHANGE
+- --suggested-fee-recipient=YOURWALLETADDRESS 
 ```
-./validator --wallet-dir=/root/.eth2validators/prysm-wallet-v2 --auroria --suggested-fee-recipient=YOURWALLETADDRESS
+./validator --wallet-dir=/root/.eth2validators/prysm-wallet-v2 --auroria --suggested-fee-recipient=YOURWALLETADDRESSHERE
 ```
 ## Detach from the Screen Session:
 ## Press Ctrl + A, then D.
