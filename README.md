@@ -257,7 +257,7 @@ Description=Validator Node for Auroria Testnet
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/expect -c "spawn /root/StratisEVM/validator --wallet-dir=/root/.eth2validators/prysm-wallet-v2 --auroria --suggested-fee-recipient=your_wallet_here; sleep 2; set password [exec cat /root/StratisEVM/password.txt]; send \"\$password\r\"; expect \"Wallet password:\"; send \"\$password\r\"; interact"
+ExecStart=/usr/bin/expect -c "spawn /root/StratisEVM/validator --wallet-dir=/root/.eth2validators/prysm-wallet-v2 --auroria --suggested-fee-recipient=YOUADDRESSHERE; sleep 2; set password [exec cat /root/StratisEVM/password.txt]; send \"\$password\r\"; expect \"Wallet password:\"; send \"\$password\r\"; interact"
 Restart=always
 User=root
 
@@ -266,11 +266,17 @@ WantedBy=default.target
 EOF
 
 
-```
- - if you get error,change
 
-#### password at here send \"YOURPASSWORD\r\"; interact"
-#### suggested-fee-recipient=your_wallet_here example:0x1010101010
+```
+#  If got error try with this before change 
+#### Change to your address at=suggested-fee-recipient=0x000000;
+```
+/usr/bin/expect -c 'spawn /root/StratisEVM/validator --wallet-dir=/root/.eth2validators/prysm-wallet-v2 --auroria --suggested-fee-recipient=YOURADDRESSHERE; sleep 2; set password [exec cat /root/StratisEVM/password.txt]; send "$password\r"; expect "Wallet password:"; send "$password\r"; interact'
+```
+# then you can try it, If you still get error, change to option 2
+#### CHANGE THIS YOURPASSWORD and 0x1010101010
+- password at here send \"YOURPASSWORD\r\"; interact"
+- suggested-fee-recipient=your_wallet_here example:0x1010101010
 ```
 ExecStart=/usr/bin/expect -c "spawn /root/StratisEVM/validator --wallet-dir=/root/.eth2validators/prysm-wallet-v2 --auroria --suggested-fee-recipient=YOURWALLETHERE; sleep 2; set password [exec cat /root/StratisEVM/password.txt]; send \"\$password\r\"; expect \"Wallet password:\"; send \"\$password\r\"; interact"password:\"; send \"YOURPASSWORD\r\"; interact"
 ```
@@ -294,6 +300,7 @@ journalctl -u validator-auroria -f
 
 
 ```
+
 
 #  Congratulations! Your StratisEVM validator node for Auroria Testnet is now set up and running.
 
