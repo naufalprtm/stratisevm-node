@@ -218,6 +218,73 @@ https://auroria.faucet.stratisevm.com/
 ./validator accounts import --keys-dir=/root/StratisEVM/validator_keys  --auroria
 
 ```
+
+
+
+#  Install Screen (on Ubuntu/Debian):
+
+```
+sudo apt-get update
+sudo apt-get install screen
+```
+
+#  Start a New Screen Session:
+
+```
+screen -S validator
+
+```
+#  Run a Command Inside the Screen Session:
+
+```
+./validator --wallet-dir=/root/.eth2validators/prysm-wallet-v2 --auroria --suggested-fee-recipient=YOURWALLETADDRESS
+```
+## Detach from the Screen Session:
+## Press Ctrl + A, then D.
+
+#  List All Screen Sessions:
+
+```
+screen -ls
+
+```
+#  Reattach to a Screen Session:(FOR CHECK IF YOU WANT TO QUIT FROM SCREEN SESSION JUST CTRL+A+D)
+
+```
+screen -r validator
+```
+#  USEFULL COMMAND
+-  List active screen sessions:
+```
+screen -ls
+```
+-  Terminate a screen session (when attached):
+-  Press Ctrl + A, then :quit or :exit.
+
+Terminate a screen session (from outside):
+```
+screen -X -S session_id quit
+```
+-  Replace session_id with the actual session ID.
+
+-  Check the running validator process:
+```
+ps aux | grep 'validator'
+```
+-  Stop the validator process:
+-  Find the screen session ID using screen -ls, then use screen -X -S session_id quit.
+
+-  View logs (replace validator_logs.txt with your actual log file):
+```
+tail -f validator_logs.txt 
+```
+
+
+
+    
+#  Create validator systemd service (OPTION 2)
+
+
 #  Create a password file and set the desired password:
  echo "yourpassword"  example:12345
  
@@ -243,8 +310,8 @@ https://auroria.faucet.stratisevm.com/
     sudo chown root:root /root/StratisEVM/password.txt
   
 ```    
-    
-#  Create validator systemd service
+
+
 Now, you can proceed to create the systemd service for the StratisEVM validator:
 change this
  - suggested-fee-recipient=your_wallet_here example:0x1010101010
