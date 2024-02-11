@@ -274,6 +274,9 @@ EOF
 ```
 ExecStart=/usr/bin/expect -c "spawn /root/StratisEVM/validator --wallet-dir=/root/.eth2validators/prysm-wallet-v2 --auroria --suggested-fee-recipient=YOURWALLETHERE; sleep 2; set password [exec cat /root/StratisEVM/password.txt]; send \"\$password\r\"; expect \"Wallet password:\"; send \"\$password\r\"; interact"password:\"; send \"YOURPASSWORD\r\"; interact"
 ```
+### suggested-fee-recipient=your_wallet_here example:0x1010101010
+After that, try again, you just need to change the exec section and copy and paste it again in the terminal
+Once finished, continue and repeat the step "sudo systemctl daemon-reload"
 #  Reload systemd configuration and start validator service:
 
 ```
