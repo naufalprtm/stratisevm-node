@@ -184,7 +184,7 @@ sudo systemctl daemon-reload
 #  Start Beacon service:
 
 ```
-
+sudo systemctl enable beacon-auroria.service
 sudo systemctl start beacon-auroria.service 
 
 ```
@@ -356,6 +356,7 @@ Once finished, continue and repeat the step "sudo systemctl daemon-reload"
 ```
 
 sudo systemctl daemon-reload
+sudo systemctl enable validator-auroria.service
 sudo systemctl start validator-auroria.service
 
 ```
