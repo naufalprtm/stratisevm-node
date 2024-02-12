@@ -138,8 +138,9 @@ EOF
 
 ```
 sudo systemctl daemon-reload
-sudo systemctl start geth-auroria.service
 sudo systemctl enable geth-auroria.service
+sudo systemctl start geth-auroria.service
+
 
 ```
 
